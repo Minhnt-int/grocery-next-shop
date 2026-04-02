@@ -1,0 +1,30 @@
+{
+  "workers": [
+    {
+      "name": "planner",
+      "base_url": "https://api.openai.com/v1",
+      "api_key_env": "OPENAI_KEY",
+      "model": "gpt-4.1-mini",
+      "role": "clarify_and_plan"
+    },
+    {
+      "name": "builder_fast",
+      "base_url": "https://api.openai.com/v1",
+      "api_key_env": "OPENAI_KEY",
+      "model": "gpt-4.1-mini",
+      "role": "execute_tasks"
+    },
+    {
+      "name": "reviewer",
+      "base_url": "https://api.openai.com/v1",
+      "api_key_env": "OPENAI_KEY",
+      "model": "gpt-4.1",
+      "role": "review_and_merge"
+    }
+  ],
+  "settings": {
+    "temperature": 0.2,
+    "max_tokens": 2200,
+    "timeout_seconds": 120
+  }
+}
