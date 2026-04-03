@@ -41,14 +41,14 @@ def call_chat(base_url, api_key, model, system, user, temperature=0.4, max_token
     return json.loads(r.json()["choices"][0]["message"]["content"])
 
 
-def create_video(base_url, api_key, model, prompt):
+def create_video(base_url, api_key, model, prompt, seconds="8"):
     # Per OpenAI Videos API create endpoint
     url = base_url.rstrip("/") + "/videos"
     headers = {"Authorization": f"Bearer {api_key}"}
     data = {
         "model": model,
         "prompt": prompt,
-        "seconds": "8",
+        "seconds": str(seconds),
         "size": "720x1280",
     }
     r = requests.post(url, headers=headers, data=data, timeout=180)
@@ -63,6 +63,7 @@ def main():
     p.add_argument("--video-base-url", default="https://api.openai.com/v1")
     p.add_argument("--chat-model", default="gpt-4.1")
     p.add_argument("--video-model", default="sora-2")
+    p.add_argument("--video-seconds", default="8", choices=["8", "12"])
     p.add_argument("--chat-key-env", default="OPENAI_KEY_ANALYST")
     p.add_argument("--video-key-env", default="OPENAI_KEY_VIDEO")
     args = p.parse_args()
@@ -117,7 +118,7 @@ def main():
     req = {
         "model": args.video_model,
         "prompt": video_prompt,
-        "seconds": "8",
+        "seconds": str(args.video_seconds),
         "size": "720x1280",
     }
     (out / "video_request.json").write_text(
@@ -129,6 +130,7 @@ def main():
         video_key,
         args.video_model,
         video_prompt,
+        seconds=args.video_seconds,
     )
     (out / "video_create_response.json").write_text(
         json.dumps(video_resp, ensure_ascii=False, indent=2), encoding="utf-8"
