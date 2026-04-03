@@ -12,8 +12,9 @@ _(What do they care about? What projects are they working on? What annoys them? 
 
 ## Chat Commands Preferences
 
-- Khi Minh gửi `/batdau`, trả về menu lựa chọn.
-- Menu hiện tại chỉ có 1 mục: **Upload sản phẩm**.
+- Khi Minh gửi `/batdau`, luôn hiện menu lựa chọn.
+- Menu hiện tại có 1 mục: **Upload sản phẩm**.
+- Sau khi chọn Upload sản phẩm, áp dụng quy trình tại `WORKFLOW.md` (affiliate pipeline).
 
 ---
 
