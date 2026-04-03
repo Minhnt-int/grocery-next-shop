@@ -1,0 +1,7 @@
+﻿{
+    "id":  "video_sim_20260403-113249",
+    "status":  "queued",
+    "model":  "sora-2",
+    "seconds":  "12",
+    "note":  "AUTO-MODE: using simulated response because API keys not configured in this environment."
+}

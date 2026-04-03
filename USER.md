@@ -15,6 +15,7 @@ _(What do they care about? What projects are they working on? What annoys them? 
 - Khi Minh gửi `/batdau`, luôn hiện menu lựa chọn.
 - Menu hiện tại có 1 mục: **Upload sản phẩm**.
 - Sau khi chọn Upload sản phẩm, áp dụng quy trình tại `WORKFLOW.md` (affiliate pipeline).
+- Ưu tiên chế độ tự động: Minh chỉ gửi sản phẩm, hệ thống tự thiết lập tham số và trả kết quả.
 
 ---
 

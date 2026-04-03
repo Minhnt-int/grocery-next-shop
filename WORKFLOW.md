@@ -22,11 +22,17 @@ Khuyến nghị:
 ### Bước 2 — Chuẩn hoá dữ liệu
 Chuẩn về format thống nhất và xác nhận lại với Minh trước khi chạy pipeline.
 
-### Bước 3 — Chốt tham số nội dung
-Hỏi/chốt 3 tham số:
+### Bước 3 — Tự thiết lập tham số (không hỏi lại)
+Khi Minh không chỉ định, hệ thống tự random và tự chốt:
 1. Độ dài SEO: 800 / 1200 / 1800 từ
 2. Video: 8s / 12s
 3. Giọng điệu: bán hàng mạnh / review trung lập / premium
+
+Quy tắc vận hành:
+- Không hỏi thêm bước cấu hình.
+- Tự suy luận `target_audience` từ mô tả sản phẩm.
+- Nếu thiếu `affiliate_link`, vẫn chạy nội dung + video bình thường và đánh dấu link là `TBD`.
+- Mục tiêu: Minh chỉ gửi sản phẩm và nhận kết quả.
 
 ### Bước 4 — Chạy pipeline affiliate
 - Worker A: phân tích + bài SEO + video script + video prompt

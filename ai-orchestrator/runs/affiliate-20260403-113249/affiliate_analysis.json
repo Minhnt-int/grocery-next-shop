@@ -1,0 +1,29 @@
+﻿{
+    "similar_products":  [
+                             {
+                                 "price_range":  "300k-600k",
+                                 "name":  "Bánh kem tạo hình nhân vật",
+                                 "key_features":  [
+                                                      "decor theo chủ đề",
+                                                      "size đa dạng",
+                                                      "nhận làm theo yêu cầu"
+                                                  ],
+                                 "positioning":  "Phân khúc quà tặng sinh nhật cá nhân hóa"
+                             }
+                         ],
+    "inferred_features":  [
+                              "ít ngọt dễ ăn",
+                              "cốt mềm mịn",
+                              "set phụ kiện đầy đủ"
+                          ],
+    "target_persona":  [
+                           "Mẹ bỉm bận rộn",
+                           "Nhóm bạn đặt tiệc mini",
+                           "Người mua cần bánh chụp ảnh đẹp"
+                       ],
+    "usp_hypothesis":  [
+                           "Hình Kuro bắt trend",
+                           "Vị việt quất lạ miệng",
+                           "Combo phụ kiện đầy đủ không cần chuẩn bị thêm"
+                       ]
+}
