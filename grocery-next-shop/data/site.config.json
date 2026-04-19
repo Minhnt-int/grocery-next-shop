@@ -9,5 +9,14 @@
   "surfaceColor": "#ffffff",
   "textColor": "#0f172a",
   "radius": "14px",
-  "supportPhone": "0900 123 456"
+  "supportPhone": "0900 123 456",
+  "email": "contact@greenbasket.vn",
+  "address": "123 Đường ABC, Quận 1, TP.HCM",
+  "vietqrBin": "970415",
+  "vietqrAccount": "108867390718",
+  "vietqrAccountName": "NGUYEN TUAN MINH",
+  "vietqrTemplate": "4QyF6L2",
+  "metaTitle": "GreenBasket - Tạp hoá tươi mỗi ngày",
+  "metaDesc": "Mua sắm tạp hoá online tiện lợi, giao hàng nhanh trong ngày",
+  "metaKeywords": "tạp hoá, mua sắm online, giao hàng nhanh"
 }

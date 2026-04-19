@@ -18,6 +18,37 @@ export async function getAllOrders() {
   return orders;
 }
 
+export async function getOrderById(id: number) {
+  const order = await prisma.order.findUnique({
+    where: { id },
+    include: {
+      items: {
+        include: {
+          product: true,
+        },
+      },
+    },
+  });
+
+  return order;
+}
+
+export async function updateOrderStatus(id: number, status: string) {
+  const order = await prisma.order.update({
+    where: { id },
+    data: { status },
+    include: {
+      items: {
+        include: {
+          product: true,
+        },
+      },
+    },
+  });
+
+  return order;
+}
+
 export async function createOrder(payload: CreateOrderPayload) {
   const { customer, phone, address, note, items } = payload;
 
