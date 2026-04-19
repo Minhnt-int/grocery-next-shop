@@ -1,6 +1,23 @@
 import { prisma } from "@/lib/db";
 import type { CreateOrderPayload } from "@/types/order";
 
+export async function getAllOrders() {
+  const orders = await prisma.order.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+    include: {
+      items: {
+        include: {
+          product: true,
+        },
+      },
+    },
+  });
+
+  return orders;
+}
+
 export async function createOrder(payload: CreateOrderPayload) {
   const { customer, phone, address, note, items } = payload;
 

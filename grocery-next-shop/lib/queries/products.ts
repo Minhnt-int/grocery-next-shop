@@ -1,6 +1,46 @@
 import { prisma } from "@/lib/db";
 import type { Product } from "@/types/product";
 
+export async function searchProducts(query: string): Promise<Product[]> {
+  if (!query || query.trim().length < 2) {
+    return [];
+  }
+
+  const products = await prisma.product.findMany({
+    where: {
+      OR: [
+        { name: { contains: query } },
+        { description: { contains: query } },
+      ],
+    },
+    include: {
+      category: true,
+    },
+    take: 5,
+    orderBy: {
+      name: "asc",
+    },
+  });
+
+  return products.map((p) => ({
+    id: p.id,
+    name: p.name,
+    slug: p.slug,
+    price: p.price,
+    stock: p.stock,
+    image: p.image,
+    description: p.description,
+    isFeatured: p.isFeatured,
+    isFlashSale: p.isFlashSale,
+    category: {
+      id: p.category.id,
+      name: p.category.name,
+      slug: p.category.slug,
+      icon: p.category.icon,
+    },
+  }));
+}
+
 export async function getAllProducts(): Promise<Product[]> {
   const products = await prisma.product.findMany({
     include: {
