@@ -31,6 +31,9 @@ export function AdminLoginForm({ redirectTo }: { redirectTo: string }) {
         return;
       }
 
+      // Wait for cookie to be set before redirect
+      await new Promise((resolve) => setTimeout(resolve, 100));
+      
       router.push(redirectTo);
       router.refresh();
     } catch {
