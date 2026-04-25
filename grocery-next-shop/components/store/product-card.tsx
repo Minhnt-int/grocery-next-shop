@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { formatCurrencyVND } from "@/lib/utils";
 import { useCartStore } from "@/store/cart-store";
+import { useUIStore } from "@/store/ui-store";
 import type { Product } from "@/types/product";
 import { ShoppingCart } from "lucide-react";
 
@@ -16,6 +17,7 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   const addItem = useCartStore((state) => state.addItem);
+  const openCartSidebar = useUIStore((state) => state.openCartSidebar);
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -26,6 +28,7 @@ export function ProductCard({ product }: ProductCardProps) {
       image: product.image,
       slug: product.slug,
     });
+    openCartSidebar();
   };
 
   return (
@@ -40,7 +43,7 @@ export function ProductCard({ product }: ProductCardProps) {
           />
           {product.isFlashSale && (
             <Badge variant="danger" className="absolute top-2 right-2 z-10">
-              Flash Sale
+              Khuyến mãi
             </Badge>
           )}
           {product.isFeatured && !product.isFlashSale && (

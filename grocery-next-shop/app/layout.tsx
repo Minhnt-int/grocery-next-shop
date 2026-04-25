@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { CartSidebar } from "@/components/store/cart-sidebar";
 import { getThemeVariables, siteConfig } from "@/lib/site-config";
 
 const inter = Inter({ subsets: ["latin", "vietnamese"] });
@@ -25,6 +26,7 @@ export default function RootLayout({
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
+        <CartSidebar />
       </body>
     </html>
   );

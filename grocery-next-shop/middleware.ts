@@ -5,7 +5,7 @@ import { authCookieName, verifyAdminToken } from "@/lib/auth";
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  if (pathname.startsWith("/admin/login") || pathname.startsWith("/api/admin/login")) {
+  if (pathname.startsWith("/login-admin") || pathname.startsWith("/api/admin/login")) {
     return NextResponse.next();
   }
 
@@ -14,7 +14,7 @@ export function middleware(request: NextRequest) {
     const session = token ? verifyAdminToken(token) : null;
 
     if (!session) {
-      const loginUrl = new URL("/admin/login", request.url);
+      const loginUrl = new URL("/login-admin", request.url);
       loginUrl.searchParams.set("from", pathname);
       return NextResponse.redirect(loginUrl);
     }
@@ -24,5 +24,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*", "/api/admin/:path*"],
+  matcher: ["/admin/:path*", "/api/admin/:path*", "/login-admin"],
 };

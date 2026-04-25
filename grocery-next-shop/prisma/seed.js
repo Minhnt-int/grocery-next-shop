@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 const { PrismaClient } = require('@prisma/client');
+const bcrypt = require('bcryptjs');
 
 const prisma = new PrismaClient();
 
@@ -8,6 +9,23 @@ async function main() {
   await prisma.order.deleteMany();
   await prisma.product.deleteMany();
   await prisma.category.deleteMany();
+
+  const adminPassword = await bcrypt.hash('admin123', 10);
+
+  await prisma.user.upsert({
+    where: { email: 'admin@grocery.local' },
+    update: {
+      password: adminPassword,
+      name: 'Administrator',
+      role: 'admin',
+    },
+    create: {
+      email: 'admin@grocery.local',
+      password: adminPassword,
+      name: 'Administrator',
+      role: 'admin',
+    },
+  });
 
   const categories = await prisma.$transaction([
     prisma.category.create({ data: { name: 'Rau Củ', slug: 'rau-cu', icon: '🥬' } }),

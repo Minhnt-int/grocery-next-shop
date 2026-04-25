@@ -13,6 +13,11 @@ export async function getAllCategories(): Promise<Category[]> {
     name: c.name,
     slug: c.slug,
     icon: c.icon,
+    banner: c.banner,
+    description: c.description,
+    metaTitle: c.metaTitle,
+    metaDesc: c.metaDesc,
+    metaKeywords: c.metaKeywords,
   }));
 }
 
@@ -28,5 +33,10 @@ export async function getCategoryBySlug(slug: string): Promise<Category | null> 
     name: category.name,
     slug: category.slug,
     icon: category.icon,
+    banner: category.banner,
+    description: category.description,
+    metaTitle: category.metaTitle,
+    metaDesc: category.metaDesc,
+    metaKeywords: category.metaKeywords,
   };
 }

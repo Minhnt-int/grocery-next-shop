@@ -1,12 +1,5 @@
-import { AdminLoginForm } from "@/components/admin/admin-login-form";
+import { redirect } from "next/navigation";
 
-export default async function AdminLoginPage({
-  searchParams,
-}: {
-  searchParams?: Promise<{ from?: string }>;
-}) {
-  const resolvedSearchParams = await searchParams;
-  const redirectTo = resolvedSearchParams?.from || "/admin";
-
-  return <AdminLoginForm redirectTo={redirectTo} />;
+export default function AdminLoginRedirect() {
+  redirect("/login-admin");
 }

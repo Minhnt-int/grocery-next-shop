@@ -8,7 +8,7 @@ export function AdminLogoutButton() {
 
   const handleLogout = async () => {
     await fetch("/api/admin/logout", { method: "POST" });
-    router.push("/admin/login");
+    router.push("/login-admin");
     router.refresh();
   };
 

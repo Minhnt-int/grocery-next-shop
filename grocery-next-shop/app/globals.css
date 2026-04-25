@@ -20,7 +20,9 @@ html {
 
 body {
   margin: 0;
-  background: var(--color-background);
+  background:
+    linear-gradient(rgba(248, 250, 252, 0.92), rgba(248, 250, 252, 0.94)),
+    url("https://images.unsplash.com/photo-1542838132-92c53300491e?w=1800&auto=format&fit=crop") center/cover fixed;
   color: var(--color-text);
   font-family: var(--font-inter), Inter, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -61,6 +63,16 @@ img {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
+}
+
+/* Hide scrollbar for drag scroll */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Light polish */

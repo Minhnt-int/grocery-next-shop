@@ -8,7 +8,11 @@ export type Product = {
   stock: number;
   image: string;
   description: string;
+  content?: string | null;
   isFeatured: boolean;
   isFlashSale: boolean;
+  metaTitle?: string | null;
+  metaDesc?: string | null;
+  metaKeywords?: string | null;
   category: Category;
 };

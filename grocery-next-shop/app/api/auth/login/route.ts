@@ -5,31 +5,36 @@ import { signAdminToken, authCookieName } from "@/lib/auth";
 
 export async function POST(request: Request) {
   try {
-    const { username, password } = await request.json();
+    const { email, password } = await request.json();
 
-    if (!username || !password) {
-      return NextResponse.json({ error: "Vui lòng nhập email/tên đăng nhập và mật khẩu" }, { status: 400 });
+    if (!email || !password) {
+      return NextResponse.json({ error: "Email và mật khẩu là bắt buộc" }, { status: 400 });
     }
 
-    const user = await prisma.user.findFirst({
-      where: {
-        OR: [{ email: username }, { name: username }],
-        role: "admin",
-      },
+    const user = await prisma.user.findUnique({
+      where: { email },
     });
 
     if (!user) {
-      return NextResponse.json({ error: "Sai tên đăng nhập hoặc mật khẩu" }, { status: 401 });
+      return NextResponse.json({ error: "Email hoặc mật khẩu không đúng" }, { status: 401 });
     }
 
     const passwordOk = await bcrypt.compare(password, user.password);
 
     if (!passwordOk) {
-      return NextResponse.json({ error: "Sai tên đăng nhập hoặc mật khẩu" }, { status: 401 });
+      return NextResponse.json({ error: "Email hoặc mật khẩu không đúng" }, { status: 401 });
     }
 
     const token = signAdminToken({ id: user.id, email: user.email, role: user.role });
-    const response = NextResponse.json({ success: true });
+    const response = NextResponse.json({ 
+      success: true, 
+      user: {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        role: user.role,
+      }
+    });
 
     response.cookies.set(authCookieName, token, {
       httpOnly: true,
